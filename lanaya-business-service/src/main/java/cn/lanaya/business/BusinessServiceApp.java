@@ -19,7 +19,7 @@ public class BusinessServiceApp extends WebMvcConfigurationSupport {
 
 	@Override
 	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**")
+		registry.addResourceHandler("/**")
 				.addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/static/");
 		super.addResourceHandlers(registry);
 	}

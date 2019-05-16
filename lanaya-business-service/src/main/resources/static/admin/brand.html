@@ -12,13 +12,20 @@
     <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/angularjs/angular.js" ></script>
-    <script src="../js/App.js"></script>
+
+    <script src="../plugins/angularjs/pagination.js"></script>
+    <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
     <!--    <script src="../plugins/angularjs/angular-animate.js" ></script>-->
 <!--    <script src="../plugins/angularjs/angular-route.js" ></script>-->
+    <script type="text/javascript" src="../js/common/base.js"></script>
+    <script type="text/javascript" src="../js/common/base_pagination.js"></script>
+    <script type="text/javascript" src="../js/service/businessBrandService.js"></script>
+    <script type="text/javascript" src="../js/common/baseController.js"></script>
+    <script type="text/javascript" src="../js/controller/businessBrandController.js"></script>
 
 </head>
 <body class="hold-transition skin-red sidebar-mini" ng-app="business"
-      ng-controller="businessController">
+      ng-controller="businessBrandController">
 <!-- .box-body -->
 <div class="box-header with-border">
     <h3 class="box-title">品牌管理</h3>
@@ -77,7 +84,7 @@
             </tbody>
         </table>
         <!--数据列表/-->
-
+        <tm-pagination conf="paginationConf"></tm-pagination>
 
     </div>
     <!-- 数据表格 /-->
