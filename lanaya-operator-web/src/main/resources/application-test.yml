@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: service-hi
+
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5
+  client:
+    registry-fetch-interval-seconds: 10
+    service-url:
+      defaultZone: http://localhost:8071/eureka
+    healthcheck:
+      enabled: true

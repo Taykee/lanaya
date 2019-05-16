@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lanaya.business.dao.BusinessBrandMapper">
+  <resultMap id="BaseResultMap" type="cn.lanaya.business.entity.BusinessBrand">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="first_char" jdbcType="VARCHAR" property="firstChar" />
+    <result column="list_time" jdbcType="DATE" property="listTime" />
+    <result column="delist_time" jdbcType="DATE" property="delistTime" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="popularity" jdbcType="DECIMAL" property="popularity" />
+    <result column="reputation" jdbcType="DECIMAL" property="reputation" />
+    <result column="penetration" jdbcType="DECIMAL" property="penetration" />
+    <result column="logo_id" jdbcType="VARCHAR" property="logoId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="rowstate" jdbcType="INTEGER" property="rowstate" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="createuser" jdbcType="VARCHAR" property="createuser" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateuser" jdbcType="VARCHAR" property="updateuser" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, first_char, list_time, delist_time, industry, popularity, reputation, penetration, logo_id, company_id, company_name, rowstate, version, createuser, createtime, updateuser, updatetime
+  </sql>
+  <select id="selectByClause" parameterType="cn.lanaya.business.entity.BusinessBrand" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from business_brand
+    <include refid="WhereClause" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from business_brand
+    where id = #{id, jdbcType = BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from business_brand
+    where id = #{id, jdbcType = BIGINT}
+  </delete>
+  <delete id="deleteByClause" parameterType="cn.lanaya.business.vo.BusinessBrandVO">
+    delete from business_brand
+    <include refid="WhereClause" />
+  </delete>
+  <insert id="insert" parameterType="cn.lanaya.business.entity.BusinessBrand">
+    insert into business_brand
+    (id, name, first_char, list_time, delist_time, industry, popularity, reputation, penetration, logo_id, company_id, company_name, rowstate, version, createuser, createtime, updateuser, updatetime)
+    values
+    (#{id, jdbcType = BIGINT}, #{name, jdbcType = VARCHAR}, #{firstChar, jdbcType = VARCHAR}, #{listTime, jdbcType = DATE}, #{delistTime, jdbcType = DATE}, #{industry, jdbcType = VARCHAR}, #{popularity, jdbcType = DECIMAL}, #{reputation, jdbcType = DECIMAL}, #{penetration, jdbcType = DECIMAL}, #{logoId, jdbcType = VARCHAR}, #{companyId, jdbcType = VARCHAR}, #{companyName, jdbcType = VARCHAR}, #{rowstate, jdbcType = INTEGER}, #{version, jdbcType = INTEGER}, #{createuser, jdbcType = VARCHAR}, #{createtime, jdbcType = TIMESTAMP}, #{updateuser, jdbcType = VARCHAR}, #{updatetime, jdbcType = TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.lanaya.business.entity.BusinessBrand">
+    insert into business_brand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="firstChar != null">
+        first_char,
+      </if>
+      <if test="listTime != null">
+        list_time,
+      </if>
+      <if test="delistTime != null">
+        delist_time,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="popularity != null">
+        popularity,
+      </if>
+      <if test="reputation != null">
+        reputation,
+      </if>
+      <if test="penetration != null">
+        penetration,
+      </if>
+      <if test="logoId != null">
+        logo_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="rowstate != null">
+        rowstate,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="createuser != null">
+        createuser,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updateuser != null">
+        updateuser,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id, jdbcType = BIGINT},
+      </if>
+      <if test="name != null">
+        #{name, jdbcType = VARCHAR},
+      </if>
+      <if test="firstChar != null">
+        #{firstChar, jdbcType = VARCHAR},
+      </if>
+      <if test="listTime != null">
+        #{listTime, jdbcType = DATE},
+      </if>
+      <if test="delistTime != null">
+        #{delistTime, jdbcType = DATE},
+      </if>
+      <if test="industry != null">
+        #{industry, jdbcType = VARCHAR},
+      </if>
+      <if test="popularity != null">
+        #{popularity, jdbcType = DECIMAL},
+      </if>
+      <if test="reputation != null">
+        #{reputation, jdbcType = DECIMAL},
+      </if>
+      <if test="penetration != null">
+        #{penetration, jdbcType = DECIMAL},
+      </if>
+      <if test="logoId != null">
+        #{logoId, jdbcType = VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId, jdbcType = VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName, jdbcType = VARCHAR},
+      </if>
+      <if test="rowstate != null">
+        #{rowstate, jdbcType = INTEGER},
+      </if>
+      <if test="version != null">
+        #{version, jdbcType = INTEGER},
+      </if>
+      <if test="createuser != null">
+        #{createuser, jdbcType = VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime, jdbcType = TIMESTAMP},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser, jdbcType = VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime, jdbcType = TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByClause" parameterType="cn.lanaya.business.vo.BusinessBrandVO" resultType="java.lang.Integer">
+    select count(*) from business_brand
+  </select>
+  <update id="updateByClauseSelective">
+    update business_brand
+    <include refid="UpdateSet" />
+    <include refid="WhereClause" />
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lanaya.business.entity.BusinessBrand">
+    update business_brand
+    <include refid="UpdateSet" />
+    where id = #{entity.id, jdbcType = BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lanaya.business.entity.BusinessBrand">
+    update business_brand
+    set 
+    name = #{name, jdbcType = VARCHAR},
+    first_char = #{firstChar, jdbcType = VARCHAR},
+    list_time = #{listTime, jdbcType = DATE},
+    delist_time = #{delistTime, jdbcType = DATE},
+    industry = #{industry, jdbcType = VARCHAR},
+    popularity = #{popularity, jdbcType = DECIMAL},
+    reputation = #{reputation, jdbcType = DECIMAL},
+    penetration = #{penetration, jdbcType = DECIMAL},
+    logo_id = #{logoId, jdbcType = VARCHAR},
+    company_id = #{companyId, jdbcType = VARCHAR},
+    company_name = #{companyName, jdbcType = VARCHAR},
+    rowstate = #{rowstate, jdbcType = INTEGER},
+    version = #{version, jdbcType = INTEGER},
+    createuser = #{createuser, jdbcType = VARCHAR},
+    createtime = #{createtime, jdbcType = TIMESTAMP},
+    updateuser = #{updateuser, jdbcType = VARCHAR},
+    updatetime = #{updatetime, jdbcType = TIMESTAMP}
+    where id = #{id, jdbcType = BIGINT}
+  </update>
+  <select id="pageByClause" parameterType="cn.lanaya.business.entity.BusinessBrand" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from business_brand
+    <include refid="PageWhereClause" />
+  </select>
+  <delete id="deleteByPrimaryKeyBatch" parameterType="java.util.List">
+    delete from business_brand
+    where
+    id in 
+    <foreach close=")" collection="list" item="param" open="(" separator=",">
+      #{param.id, jdbcType = BIGINT}
+    </foreach>
+  </delete>
+  <insert id="insertSelectiveBatch" parameterType="java.util.List">
+    insert into business_brand
+    (id, name, first_char, list_time, delist_time, industry, popularity, reputation, penetration, logo_id, company_id, company_name, rowstate, version, createuser, createtime, updateuser, updatetime)
+    values
+    <foreach collection="list" item="param" separator=",">
+      (#{param.id, jdbcType = BIGINT},#{param.name, jdbcType = VARCHAR},#{param.firstChar, jdbcType = VARCHAR},#{param.listTime, jdbcType = DATE},#{param.delistTime, jdbcType = DATE},#{param.industry, jdbcType = VARCHAR},#{param.popularity, jdbcType = DECIMAL},#{param.reputation, jdbcType = DECIMAL},#{param.penetration, jdbcType = DECIMAL},#{param.logoId, jdbcType = VARCHAR},#{param.companyId, jdbcType = VARCHAR},#{param.companyName, jdbcType = VARCHAR},#{param.rowstate, jdbcType = INTEGER},#{param.version, jdbcType = INTEGER},#{param.createuser, jdbcType = VARCHAR},#{param.createtime, jdbcType = TIMESTAMP},#{param.updateuser, jdbcType = VARCHAR},#{param.updatetime, jdbcType = TIMESTAMP})
+    </foreach>
+  </insert>
+  <sql id="WhereClause">
+    <where>
+      <if test="param.name != null and param.name != ''">
+        and name = #{param.name, jdbcType = VARCHAR}
+      </if>
+      <if test="param.firstChar != null and param.firstChar != ''">
+        and first_char = #{param.firstChar, jdbcType = VARCHAR}
+      </if>
+      <if test="param.listTimeStart != null">
+        <![CDATA[and list_time >= #{param.listTimeStart, jdbcType = DATE}]]>
+      </if>
+      <if test="param.listTimeEnd != null">
+        <![CDATA[and list_time <= #{param.listTimeEnd, jdbcType = DATE}]]>
+      </if>
+      <if test="param.delistTimeStart != null">
+        <![CDATA[and delist_time >= #{param.delistTimeStart, jdbcType = DATE}]]>
+      </if>
+      <if test="param.delistTimeEnd != null">
+        <![CDATA[and delist_time <= #{param.delistTimeEnd, jdbcType = DATE}]]>
+      </if>
+      <if test="param.industry != null and param.industry != ''">
+        and industry = #{param.industry, jdbcType = VARCHAR}
+      </if>
+      <if test="param.popularity != null">
+        and popularity = #{param.popularity, jdbcType = DECIMAL}
+      </if>
+      <if test="param.reputation != null">
+        and reputation = #{param.reputation, jdbcType = DECIMAL}
+      </if>
+      <if test="param.penetration != null">
+        and penetration = #{param.penetration, jdbcType = DECIMAL}
+      </if>
+      <if test="param.logoId != null and param.logoId != ''">
+        and logo_id = #{param.logoId, jdbcType = VARCHAR}
+      </if>
+      <if test="param.companyId != null and param.companyId != ''">
+        and company_id = #{param.companyId, jdbcType = VARCHAR}
+      </if>
+      <if test="param.companyName != null and param.companyName != ''">
+        and company_name = #{param.companyName, jdbcType = VARCHAR}
+      </if>
+      <if test="param.rowstate != null">
+        and rowstate = #{param.rowstate, jdbcType = INTEGER}
+      </if>
+      <if test="param.version != null">
+        and version = #{param.version, jdbcType = INTEGER}
+      </if>
+      <if test="param.createuser != null and param.createuser != ''">
+        and createuser = #{param.createuser, jdbcType = VARCHAR}
+      </if>
+      <if test="param.createtimeStart != null">
+        <![CDATA[and createtime >= #{param.createtimeStart, jdbcType = TIMESTAMP}]]>
+      </if>
+      <if test="param.createtimeEnd != null">
+        <![CDATA[and createtime <= #{param.createtimeEnd, jdbcType = TIMESTAMP}]]>
+      </if>
+      <if test="param.updateuser != null and param.updateuser != ''">
+        and updateuser = #{param.updateuser, jdbcType = VARCHAR}
+      </if>
+      <if test="param.updatetimeStart != null">
+        <![CDATA[and updatetime >= #{param.updatetimeStart, jdbcType = TIMESTAMP}]]>
+      </if>
+      <if test="param.updatetimeEnd != null">
+        <![CDATA[and updatetime <= #{param.updatetimeEnd, jdbcType = TIMESTAMP}]]>
+      </if>
+    </where>
+  </sql>
+  <sql id="PageWhereClause">
+    <where>
+      <if test="params.entity.name != null and params.entity.name != ''">
+        and name = #{params.entity.name, jdbcType = VARCHAR}
+      </if>
+      <if test="params.entity.firstChar != null and params.entity.firstChar != ''">
+        and first_char = #{params.entity.firstChar, jdbcType = VARCHAR}
+      </if>
+      <if test="params.entity.listTimeStart != null">
+        <![CDATA[and list_time >= #{params.entity.listTimeStart, jdbcType = DATE}]]>
+      </if>
+      <if test="params.entity.listTimeEnd != null">
+        <![CDATA[and list_time <= #{params.entity.listTimeEnd, jdbcType = DATE}]]>
+      </if>
+      <if test="params.entity.delistTimeStart != null">
+        <![CDATA[and delist_time >= #{params.entity.delistTimeStart, jdbcType = DATE}]]>
+      </if>
+      <if test="params.entity.delistTimeEnd != null">
+        <![CDATA[and delist_time <= #{params.entity.delistTimeEnd, jdbcType = DATE}]]>
+      </if>
+      <if test="params.entity.industry != null and params.entity.industry != ''">
+        and industry = #{params.entity.industry, jdbcType = VARCHAR}
+      </if>
+      <if test="params.entity.popularity != null">
+        and popularity = #{params.entity.popularity, jdbcType = DECIMAL}
+      </if>
+      <if test="params.entity.reputation != null">
+        and reputation = #{params.entity.reputation, jdbcType = DECIMAL}
+      </if>
+      <if test="params.entity.penetration != null">
+        and penetration = #{params.entity.penetration, jdbcType = DECIMAL}
+      </if>
+      <if test="params.entity.logoId != null and params.entity.logoId != ''">
+        and logo_id = #{params.entity.logoId, jdbcType = VARCHAR}
+      </if>
+      <if test="params.entity.companyId != null and params.entity.companyId != ''">
+        and company_id = #{params.entity.companyId, jdbcType = VARCHAR}
+      </if>
+      <if test="params.entity.companyName != null and params.entity.companyName != ''">
+        and company_name = #{params.entity.companyName, jdbcType = VARCHAR}
+      </if>
+      <if test="params.entity.rowstate != null">
+        and rowstate = #{params.entity.rowstate, jdbcType = INTEGER}
+      </if>
+      <if test="params.entity.version != null">
+        and version = #{params.entity.version, jdbcType = INTEGER}
+      </if>
+      <if test="params.entity.createuser != null and params.entity.createuser != ''">
+        and createuser = #{params.entity.createuser, jdbcType = VARCHAR}
+      </if>
+      <if test="params.entity.createtimeStart != null">
+        <![CDATA[and createtime >= #{params.entity.createtimeStart, jdbcType = TIMESTAMP}]]>
+      </if>
+      <if test="params.entity.createtimeEnd != null">
+        <![CDATA[and createtime <= #{params.entity.createtimeEnd, jdbcType = TIMESTAMP}]]>
+      </if>
+      <if test="params.entity.updateuser != null and params.entity.updateuser != ''">
+        and updateuser = #{params.entity.updateuser, jdbcType = VARCHAR}
+      </if>
+      <if test="params.entity.updatetimeStart != null">
+        <![CDATA[and updatetime >= #{params.entity.updatetimeStart, jdbcType = TIMESTAMP}]]>
+      </if>
+      <if test="params.entity.updatetimeEnd != null">
+        <![CDATA[and updatetime <= #{params.entity.updatetimeEnd, jdbcType = TIMESTAMP}]]>
+      </if>
+    </where>
+  </sql>
+  <sql id="UpdateSet">
+    <set>
+      <if test="entity.name != null">
+        name = #{entity.name, jdbcType = VARCHAR},
+      </if>
+      <if test="entity.firstChar != null">
+        first_char = #{entity.firstChar, jdbcType = VARCHAR},
+      </if>
+      <if test="entity.listTime != null">
+        list_time = #{entity.listTime, jdbcType = DATE},
+      </if>
+      <if test="entity.delistTime != null">
+        delist_time = #{entity.delistTime, jdbcType = DATE},
+      </if>
+      <if test="entity.industry != null">
+        industry = #{entity.industry, jdbcType = VARCHAR},
+      </if>
+      <if test="entity.popularity != null">
+        popularity = #{entity.popularity, jdbcType = DECIMAL},
+      </if>
+      <if test="entity.reputation != null">
+        reputation = #{entity.reputation, jdbcType = DECIMAL},
+      </if>
+      <if test="entity.penetration != null">
+        penetration = #{entity.penetration, jdbcType = DECIMAL},
+      </if>
+      <if test="entity.logoId != null">
+        logo_id = #{entity.logoId, jdbcType = VARCHAR},
+      </if>
+      <if test="entity.companyId != null">
+        company_id = #{entity.companyId, jdbcType = VARCHAR},
+      </if>
+      <if test="entity.companyName != null">
+        company_name = #{entity.companyName, jdbcType = VARCHAR},
+      </if>
+      <if test="entity.rowstate != null">
+        rowstate = #{entity.rowstate, jdbcType = INTEGER},
+      </if>
+      <if test="entity.version != null">
+        version = #{entity.version, jdbcType = INTEGER},
+      </if>
+      <if test="entity.createuser != null">
+        createuser = #{entity.createuser, jdbcType = VARCHAR},
+      </if>
+      <if test="entity.createtime != null">
+        createtime = #{entity.createtime, jdbcType = TIMESTAMP},
+      </if>
+      <if test="entity.updateuser != null">
+        updateuser = #{entity.updateuser, jdbcType = VARCHAR},
+      </if>
+      <if test="entity.updatetime != null">
+        updatetime = #{entity.updatetime, jdbcType = TIMESTAMP},
+      </if>
+    </set>
+  </sql>
+</mapper>

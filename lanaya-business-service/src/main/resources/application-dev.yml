@@ -1,0 +1,64 @@
+server:
+  port: 8074
+
+spring:
+  application:
+    name: business-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+primary:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lanaya_dev?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 123456
+    filters: stat
+    initialSize: 1
+    minIdle: 1
+    maxActive: 20
+    maxWait: 10000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testOnBorrow: false
+    testOnReturn: false
+    #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 20
+    testWhileIdle: true
+backup:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3380/lanaya_dev?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: root
+    filters: stat
+    initialSize: 1
+    minIdle: 1
+    maxActive: 20
+    maxWait: 10000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testOnBorrow: false
+    testOnReturn: false
+    #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 20
+    testWhileIdle: true
+
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5
+  client:
+    registry-fetch-interval-seconds: 10
+    service-url:
+      defaultZone: http://localhost:8071/eureka/
+    healthcheck:
+      enabled: true
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: cn.lanaya.*.entity
+  mapper-locations: classpath:mybatis/mapper/**/*Mapper.xml
