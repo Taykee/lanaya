@@ -25,10 +25,5 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.5</version>
 		</dependency>
-		<dependency>
-			<groupId>cn.lanaya.json</groupId>
-			<artifactId>json-parser</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 </project>
