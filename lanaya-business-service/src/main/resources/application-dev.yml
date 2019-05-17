@@ -62,3 +62,6 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   type-aliases-package: cn.lanaya.*.entity
   mapper-locations: classpath:mybatis/mapper/**/*Mapper.xml
+
+logging:
+  config: classpath:config/logback/logback-dev.xml

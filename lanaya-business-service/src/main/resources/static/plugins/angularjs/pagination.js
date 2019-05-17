@@ -26,7 +26,6 @@ angular.module('pagination', []).directive('tmPagination', [function () {
             conf: '='
         },
         link: function (scope, element, attrs) {
-
             // 变更当前页
             scope.changeCurrentPage = function (item) {
                 if (item == '...') {
@@ -35,50 +34,36 @@ angular.module('pagination', []).directive('tmPagination', [function () {
                     scope.conf.currentPage = item;
                 }
             };
-
             // 定义分页的长度必须为奇数 (default:9)
             scope.conf.pagesLength = parseInt(scope.conf.pagesLength) ? parseInt(scope.conf.pagesLength) : 9;
             if (scope.conf.pagesLength % 2 === 0) {
                 // 如果不是奇数的时候处理一下
                 scope.conf.pagesLength = scope.conf.pagesLength - 1;
             }
-
             // conf.erPageOptions
             if (!scope.conf.perPageOptions) {
                 scope.conf.perPageOptions = [10, 15, 20, 30, 50];
             }
-
             // pageList数组
             function getPagination(newValue, oldValue) {
-
-
                 // conf.currentPage
                 scope.conf.currentPage = parseInt(scope.conf.currentPage) ? parseInt(scope.conf.currentPage) : 1;
-
-
                 // conf.totalItems
                 scope.conf.totalItems = parseInt(scope.conf.totalItems) ? parseInt(scope.conf.totalItems) : 0;
-
                 // conf.itemsPerPage (default:15)
                 scope.conf.itemsPerPage = parseInt(scope.conf.itemsPerPage) ? parseInt(scope.conf.itemsPerPage) : 15;
-
-
                 // numberOfPages
                 scope.conf.numberOfPages = Math.ceil(scope.conf.totalItems / scope.conf.itemsPerPage);
-
                 // judge currentPage > scope.numberOfPages
                 if (scope.conf.currentPage < 1) {
                     scope.conf.currentPage = 1;
                 }
-
                 // 如果分页总数>0，并且当前页大于分页总数
                 if (scope.conf.numberOfPages > 0 && scope.conf.currentPage > scope.conf.numberOfPages) {
                     scope.conf.currentPage = scope.conf.numberOfPages;
                 }
-
                 // jumpPageNum
                 scope.jumpPageNum = scope.conf.currentPage;
-
                 // 如果itemsPerPage在不在perPageOptions数组中，就把itemsPerPage加入这个数组中
                 var perPageOptionsLength = scope.conf.perPageOptions.length;
                 // 定义状态
@@ -92,12 +77,10 @@ angular.module('pagination', []).directive('tmPagination', [function () {
                 if (!perPageOptionsStatus) {
                     scope.conf.perPageOptions.push(scope.conf.itemsPerPage);
                 }
-
                 // 对选项进行sort
                 scope.conf.perPageOptions.sort(function (a, b) {
                     return a - b
                 });
-
                 scope.pageList = [];
                 if (scope.conf.numberOfPages <= scope.conf.pagesLength) {
                     // 判断总页数如果小于等于分页的长度，若小于则直接显示
@@ -134,24 +117,19 @@ angular.module('pagination', []).directive('tmPagination', [function () {
                         for (i = 1; i <= offset / 2; i++) {
                             scope.pageList.push(scope.conf.currentPage + i);
                         }
-
                         scope.pageList.push('...');
                         scope.pageList.push(scope.conf.numberOfPages);
                     }
                 }
 
                 if (scope.conf.onChange) {
-
-
                     // 防止初始化两次请求问题
                     if (!(oldValue != newValue && oldValue[0] == 0)) {
                         scope.conf.onChange();
                     }
-
                 }
                 scope.$parent.conf = scope.conf;
             }
-
             // prevPage
             scope.prevPage = function () {
                 if (scope.conf.currentPage > 1) {
@@ -164,7 +142,6 @@ angular.module('pagination', []).directive('tmPagination', [function () {
                     scope.conf.currentPage += 1;
                 }
             };
-
             // 跳转页
             scope.jumpToPage = function () {
                 scope.jumpPageNum = scope.jumpPageNum.replace(/[^0-9]/g, '');
@@ -172,24 +149,13 @@ angular.module('pagination', []).directive('tmPagination', [function () {
                     scope.conf.currentPage = scope.jumpPageNum;
                 }
             };
-
-
             scope.$watch(function () {
-
-
                 if (!scope.conf.totalItems) {
                     scope.conf.totalItems = 0;
                 }
-
-
                 var newValue = scope.conf.totalItems + ' ' + scope.conf.currentPage + ' ' + scope.conf.itemsPerPage;
-
-
                 return newValue;
-
-
             }, getPagination);
-
         }
     };
 }]);

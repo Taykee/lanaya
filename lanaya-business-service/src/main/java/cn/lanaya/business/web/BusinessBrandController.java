@@ -94,7 +94,7 @@ public class BusinessBrandController extends AbstractController {
     }
 
     @PostMapping(value = "pageByClause")
-    public R<PageInfo<BusinessBrandVO>> pageByClause(@RequestBody String json) {
+    public R<PageInfo<BusinessBrandVO>> pageByClause(@RequestBody(required = false) String json) {
         log.info("pageByClause", json);
         BusinessBrandVO record = JSONObject.parseObject(json, BusinessBrandVO.class);
         PageQO page = JSONObject.parseObject(json, PageQO.class);
