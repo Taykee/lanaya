@@ -6,8 +6,8 @@ public enum MessageEnum {
 	RPC_ERROR(102, "远程调用错误")
 	;
 	
-	private int code;
-	private String msg;
+	private final int code;
+	private final String msg;
 	
 	private MessageEnum(int code, String msg) {
 		this.code = code;

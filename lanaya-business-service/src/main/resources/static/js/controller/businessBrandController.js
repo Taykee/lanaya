@@ -1,30 +1,31 @@
 app.controller('businessBrandController', function ($scope, $controller, businessBrandService) {
     $controller('baseController', {$scope:$scope});
 
-    $scope.pageByClause = function (entity) {
-        businessBrandService.pageByClause(entity).success(function (response) {
+    $scope.pageByClause = function () {
+        console.log($scope.entity);
+        businessBrandService.pageByClause($scope.entity).then(function (response) {
             $scope.list = response.data;
         });
     };
-    $scope.insertSelective = function (entity) {
-        console.log(entity);
-        businessBrandService.insertSelective(entity).success(function (response) {
+    $scope.insertSelective = function () {
+        console.log($scope.entity);
+        businessBrandService.insertSelective($scope.entity).then(function (response) {
             console.log(response);
-        })
+        });
     };
 
     $scope.updateByPrimaryKeySelective = function () {
-        businessBrandService.updateByPrimaryKeySelective(entity).success(function (response) {
+        businessBrandService.updateByPrimaryKeySelective(entity).then(function (response) {
 
         });
     };
     $scope.selectByPrimaryKey = function (entity) {
-        businessBrandService.selectByPrimaryKey(entity).success(function (respones) {
+        businessBrandService.selectByPrimaryKey(entity).then(function (respones) {
 
         });
     }
     $scope.deleteByPrimaryKeyBatch = function (entity) {
-        businessBrandService.deleteByPrimaryKeyBatch(entity).success(function (respones) {
+        businessBrandService.deleteByPrimaryKeyBatch(entity).then(function (respones) {
 
         });
     }
