@@ -2,8 +2,8 @@ app.controller('businessBrandController', function ($scope, $controller, busines
     $controller('baseController', {$scope:$scope});
 
     $scope.pageByClause = function () {
-        console.log($scope.entity);
-        businessBrandService.pageByClause($scope.entity).then(function (response) {
+        console.log($scope.search);
+        businessBrandService.pageByClause($scope.search).then(function (response) {
             $scope.list = response.data;
         });
     };
