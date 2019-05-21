@@ -86,3 +86,24 @@ CREATE TABLE `business_commodity_specify_relation` (
     PRIMARY KEY (`id`),
     KEY `commodity_id` (`commodity_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='商品规格和商品的关系表';
+
+DROP TABLE IF EXISTS `business_user`;
+CREATE TABLE `business_user` (
+    `id` varchar(32) NOT NULL AUTO_INCREMENT,
+    `username` varchar(50) NOT NULL COMMENT '用户名',
+    `password` varchar(32) NOT NULL COMMENT '密码，加密存储',
+    `phone` varchar(20) DEFAULT NULL COMMENT '注册手机号',
+    `email` varchar(50) DEFAULT NULL COMMENT '注册邮箱',
+    `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '商户状态，0-初始化，1-审核通过，2-审核中，3-审核拒绝，-1-注销，-2-冻结',
+    `rowstate` tinyint(4) NOT NULL DEFAULT '1' COMMENT '数据状态，1-正常，0-无效，-1-禁用',
+    `version` bigint(10) NOT NULL DEFAULT '1' COMMENT '版本号',
+    `createuser` varchar(32) DEFAULT NULL COMMENT '创建者',
+    `updateuser` varchar(32) DEFAULT NULL COMMENT '更新者',
+    `createtime` datetime NOT NULL COMMENT '创建时间',
+    `updatetime` datetime NOT NULL COMMENT '更新时间',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `username` (`username`) USING BTREE,
+    UNIQUE KEY `phone` (`phone`) USING BTREE,
+    UNIQUE KEY `email` (`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
