@@ -48,9 +48,41 @@ DROP TABLE IF EXISTS `business_commodity_desc`;
 CREATE TABLE `business_commodity_desc` (
     `commodity_id` bigint(20) DEFAULT NULL COMMENT '商品ID',
     `instruction` text COMMENT '商品描述',
+    `rowstate` tinyint(4) NOT NULL DEFAULT '1' COMMENT '数据状态，1-正常，0-无效，-1-禁用',
+    `version` bigint(10) NOT NULL DEFAULT '1' COMMENT '版本号',
     `createuser` varchar(32) DEFAULT NULL COMMENT '创建者',
     `updateuser` varchar(32) DEFAULT NULL COMMENT '更新者',
     `createtime` datetime NOT NULL COMMENT '创建时间',
     `updatetime` datetime NOT NULL COMMENT '更新时间',
     KEY `item_id` (`commodity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品描述表';
+
+DROP TABLE IF EXISTS `business_commodity_specify`;
+CREATE TABLE `business_commodity_specify` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `commodity_category_id` bigint(20) DEFAULT NULL COMMENT '商品类目ID',
+    `specify_data` text COMMENT '参数数据，格式为json格式',
+    `rowstate` tinyint(4) NOT NULL DEFAULT '1' COMMENT '数据状态，1-正常，0-无效，-1-禁用',
+    `version` bigint(10) NOT NULL DEFAULT '1' COMMENT '版本号',
+    `createuser` varchar(32) DEFAULT NULL COMMENT '创建者',
+    `updateuser` varchar(32) DEFAULT NULL COMMENT '更新者',
+    `createtime` datetime NOT NULL COMMENT '创建时间',
+    `updatetime` datetime NOT NULL COMMENT '更新时间',
+    PRIMARY KEY (`id`),
+    KEY `commodity_category_id` (`commodity_category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='商品规格参数';
+
+DROP TABLE IF EXISTS `business_commodity_specify_relation`;
+CREATE TABLE `business_commodity_specify_relation` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `commodity_id` bigint(20) DEFAULT NULL COMMENT '商品ID',
+    `data` text COMMENT '参数数据，格式为json格式',
+    `rowstate` tinyint(4) NOT NULL DEFAULT '1' COMMENT '数据状态，1-正常，0-无效，-1-禁用',
+    `version` bigint(10) NOT NULL DEFAULT '1' COMMENT '版本号',
+    `createuser` varchar(32) DEFAULT NULL COMMENT '创建者',
+    `updateuser` varchar(32) DEFAULT NULL COMMENT '更新者',
+    `createtime` datetime NOT NULL COMMENT '创建时间',
+    `updatetime` datetime NOT NULL COMMENT '更新时间',
+    PRIMARY KEY (`id`),
+    KEY `commodity_id` (`commodity_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='商品规格和商品的关系表';
