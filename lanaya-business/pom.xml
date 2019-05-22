@@ -10,11 +10,11 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>cn.lanaya</groupId>
-	<artifactId>lanaya-business-service</artifactId>
+	<artifactId>lanaya-business</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>lanaya-business-service</name>
-	<description>lanaya-business-service</description>
+	<name>lanaya-business</name>
+	<description>lanaya-business</description>
 
 	<properties>
 		<java.version>1.8</java.version>
